@@ -44,7 +44,6 @@ set tm=500
 
 
 " show location
-set cursorcolumn
 set cursorline
 
 
@@ -55,6 +54,7 @@ set scrolloff=7                 " keep 3 lines when scrolling
 " show
 set ruler                       " show the current row and column
 set number                      " show line numbers
+set relativenumber              " show line relative numbers
 set nowrap
 set showcmd                     " display incomplete commands
 set showmode                    " display current modes
@@ -104,6 +104,7 @@ set termencoding=utf-8
 set ffs=unix,dos,mac
 set formatoptions+=m
 set formatoptions+=B
+set formatoptions+=j
 
 " select & complete
 set selection=inclusive
@@ -126,6 +127,22 @@ endif
 " NOT SUPPORT
 " Enable basic mouse behavior such as resizing buffers.
 " set mouse=a
+
+" ================ Turn Off Swap Files ==============
+
+set noswapfile
+set nobackup
+set nowb
+
+
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
 
 
 " ============================ theme and status line ============================
