@@ -1,12 +1,11 @@
 "==========================================
-" ProjectLink: https://github.com/wklken/vim-for-server
-" Author:  wklken
-" Version: 0.2
-" Email: wklken@yeah.net
-" BlogPost: http://www.wklken.me
+" ProjectLink: https://github.com/nandalopes/vim-for-server
+" Author:  wklken,nandalopes
+" Version: 0.3
+" Email: nandalopes@gmail.com
 " Donation: http://www.wklken.me/pages/donation.html
 " ReadMe: README.md
-" Last_modify: 2015-07-07
+" Last_modify: 2021-07-21
 " Desc: simple vim config for server, without any plugins.
 "==========================================
 
