@@ -39,11 +39,12 @@ set novisualbell                " turn off visual bell
 set noerrorbells                " don't beep
 set visualbell t_vb=            " turn off error beep/flash
 set t_vb=
-set tm=500
+set timeoutlen=500
 
 
 " show location
-set cursorline
+" set cursorcolumn                " highlight cursor column
+set cursorline                  " highlight cursor line
 
 
 " movement
@@ -74,10 +75,10 @@ set smarttab
 set shiftround
 
 " indent
-set autoindent smartindent shiftround
+set autoindent smartindent
 set shiftwidth=4
 set tabstop=4
-set softtabstop=4                " insert mode tab and backspace use 4 spaces
+set softtabstop=4               " insert mode tab and backspace use 4 spaces
 
 " NOT SUPPORT
 " fold
@@ -85,7 +86,7 @@ set foldenable
 set foldmethod=indent
 set foldlevel=99
 let g:FoldMethod = 0
-map <leader>zz :call ToggleFold()<cr>
+map <Leader>zz :call ToggleFold()<cr>
 fun! ToggleFold()
     if g:FoldMethod == 0
         exe "normal! zM"
@@ -100,7 +101,7 @@ endfun
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set termencoding=utf-8
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 set formatoptions+=m
 set formatoptions+=B
 set formatoptions+=j
@@ -110,7 +111,7 @@ set selection=inclusive
 set selectmode=mouse,key
 
 set completeopt=longest,menu
-set wildmenu                           " show a navigable menu for tab completion"
+set wildmenu                    " show a navigable menu for tab completion"
 set wildmode=longest,list,full
 set wildignore=*.o,*~,*.pyc,*.class
 
@@ -157,13 +158,13 @@ hi! link ShowMarksHLu DiffChange
 
 " status line
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
-set laststatus=2   " Always show the status line - use 2 lines for the status bar
+set laststatus=2                " Always show the status line - use 2 lines for the status bar
 
 
 " ============================ specific file type ===========================
 
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
-autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+autocmd FileType python set tabstop=4 shiftwidth=4 expandtab autoindent 
+autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab autoindent
 autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
 
 autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
@@ -199,17 +200,17 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-h> <C-w>h
+map <C-l> <C-w>l
 
-nnoremap <F2> :set nu! nu?<CR>
+nnoremap <F2> :set number! number?<CR>
 nnoremap <F3> :set list! list?<CR>
 nnoremap <F4> :set wrap! wrap?<CR>
-set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
-                                "    paste mode, where you can paste mass data
-                                "    that won't be autoindented
+set pastetoggle=<F5>            " when in insert mode, press <F5> to go to
+                                " paste mode, where you can paste mass data
+                                " that won't be autoindented
 au InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
@@ -217,9 +218,9 @@ nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 inoremap kj <Esc>
 
 " Quickly close the current window
-nnoremap <leader>q :q<CR>
+nnoremap <Leader>q :q<CR>
 " Quickly save the current file
-nnoremap <leader>w :w<CR>
+nnoremap <Leader>w :w<CR>
 
 " select all
 map <Leader>sa ggVG"
@@ -245,7 +246,7 @@ nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
 " remove highlight
-noremap <silent><leader>/ :nohls<CR>
+noremap <silent><Leader>/ :nohls<CR>
 
 "Reselect visual block after indent/outdent.调整缩进后自动选中，方便再次操作
 vnoremap < <gv
