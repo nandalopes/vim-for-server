@@ -48,7 +48,8 @@ set cursorline                  " highlight cursor line
 
 
 " movement
-set scrolloff=7                 " keep 3 lines when scrolling
+set scrolloff=5                 " keep 5 lines when scrolling
+set sidescrolloff=3             " keep 3 columns when side scrolling
 
 
 " show
@@ -126,7 +127,7 @@ endif
 
 " NOT SUPPORT
 " Enable basic mouse behavior such as resizing buffers.
-" set mouse=a
+set mouse=a
 
 " ================ Turn Off Swap Files ==============
 
