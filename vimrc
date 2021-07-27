@@ -60,7 +60,7 @@ set nowrap
 set showcmd                     " display incomplete commands
 set showmode                    " display current modes
 set showmatch                   " jump to matches when entering parentheses
-set matchtime=2                 " tenths of a second to show the matching parenthesis
+" set matchtime=2                 " tenths of a second to show the matching parenthesis
 
 
 " search
@@ -127,13 +127,13 @@ endif
 
 " NOT SUPPORT
 " Enable basic mouse behavior such as resizing buffers.
-set mouse=a
+set mouse+=a
 
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
 set nobackup
-set nowb
+set nowritebackup
 
 
 " ================ Persistent Undo ==================
@@ -166,7 +166,7 @@ set laststatus=2                " Always show the status line - use 2 lines for 
 
 " ============================ specific file type ===========================
 
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab autoindent 
+autocmd FileType python set tabstop=4 shiftwidth=4 expandtab autoindent
 autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab autoindent
 autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
 
