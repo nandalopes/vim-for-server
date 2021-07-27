@@ -103,9 +103,9 @@ set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set termencoding=utf-8
 set fileformats=unix,dos,mac
-set formatoptions+=m
-set formatoptions+=B
-set formatoptions+=j
+set formatoptions+=m            " break at a multibyte character above 255
+set formatoptions+=B            " when joining lines, don't insert a space between two multibyte chars
+set formatoptions+=j            " remove a comment leader when joining lines
 
 " select & complete
 set selection=inclusive
@@ -118,7 +118,7 @@ set wildignore=*.o,*~,*.pyc,*.class
 
 " others
 set backspace=indent,eol,start  " make that backspace key work the way it should
-set whichwrap+=<,>,h,l
+set whichwrap+=<,>,h,l          " allow <Left>, <Right>, h and l move to the next line
 
 " if this not work ,make sure .viminfo is writable for you
 if has("autocmd")
