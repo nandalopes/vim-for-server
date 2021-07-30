@@ -154,7 +154,7 @@ endif
 
 " theme
 set background=dark
-colorscheme desert
+colorscheme evening
 
 if has('termguicolors')
   set termguicolors
