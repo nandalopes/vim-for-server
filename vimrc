@@ -31,6 +31,7 @@ filetype indent on
 " base
 set autoread                    " reload files when changed on disk, i.e. via `git checkout`
 set shortmess=atI
+set path=.,**,                  " Useful search path to find and friends
 
 set magic                       " For regular expressions turn magic on
 set title                       " change the terminal's title
@@ -155,13 +156,17 @@ endif
 set background=dark
 colorscheme desert
 
+if has('termguicolors')
+  set termguicolors
+endif
+
 " set mark column color
 hi! link SignColumn   LineNr
 hi! link ShowMarksHLl DiffAdd
 hi! link ShowMarksHLu DiffChange
 
 " status line
-set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-10.(%l,%c%V%)\ %P\ 
 set laststatus=2                " Always show the status line - use 2 lines for the status bar
 
 
