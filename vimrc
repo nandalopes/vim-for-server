@@ -9,8 +9,10 @@
 " Desc: simple vim config for server, without any plugins.
 "==========================================
 
+set nocompatible                " don't bother with vi compatibility
+
 " leader
-let mapleader = ','
+" let mapleader = ','
 let g:mapleader = ','
 
 " syntax
@@ -27,7 +29,6 @@ filetype indent on
 
 
 " base
-set nocompatible                " don't bother with vi compatibility
 set autoread                    " reload files when changed on disk, i.e. via `git checkout`
 set shortmess=atI
 
@@ -90,10 +91,10 @@ let g:FoldMethod = 0
 map <Leader>zz :call ToggleFold()<cr>
 fun! ToggleFold()
     if g:FoldMethod == 0
-        exe "normal! zM"
+        exe 'normal! zM'
         let g:FoldMethod = 1
     else
-        exe "normal! zR"
+        exe 'normal! zR'
         let g:FoldMethod = 0
     endif
 endfun
@@ -121,8 +122,8 @@ set backspace=indent,eol,start  " make that backspace key work the way it should
 set whichwrap+=<,>,h,l          " allow <Left>, <Right>, h and l move to the next line
 
 " if this not work ,make sure .viminfo is writable for you
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+if has('autocmd')
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g'\"" | endif
 endif
 
 " NOT SUPPORT
@@ -170,28 +171,28 @@ autocmd FileType python set tabstop=4 shiftwidth=4 expandtab autoindent
 autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab autoindent
 autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
 
-autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
+autocmd BufNewFile *.sh,*.py exec ':call AutoSetFileHead()'
 function! AutoSetFileHead()
     " .sh
-    if &filetype == 'sh'
-        call setline(1, "\#!/bin/bash")
+    if &filetype ==? 'sh'
+        call setline(1, '\#!/bin/bash')
     endif
 
     " python
-    if &filetype == 'python'
-        call setline(1, "\#!/usr/bin/env python")
-        call append(1, "\# encoding: utf-8")
+    if &filetype ==? 'python'
+        call setline(1, '\#!/usr/bin/env python')
+        call append(1, '\# encoding: utf-8')
     endif
 
-    normal G
-    normal o
-    normal o
+    normal! G
+    normal! o
+    normal! o
 endfunc
 
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
+    let l = line('.')
+    let c = col('.')
     %s/\s\+$//e
     call cursor(l, c)
 endfun
@@ -214,7 +215,7 @@ nnoremap <F4> :set wrap! wrap?<CR>
 set pastetoggle=<F5>            " when in insert mode, press <F5> to go to
                                 " paste mode, where you can paste mass data
                                 " that won't be autoindented
-au InsertLeave * set nopaste
+autocmd InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 " kj 替换 Esc
