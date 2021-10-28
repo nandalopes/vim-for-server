@@ -122,7 +122,7 @@ set wildignore=*.o,*~,*.pyc,*.class
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set whichwrap+=<,>,h,l          " allow <Left>, <Right>, h and l move to the next line
 
-" if this not work ,make sure .viminfo is writable for you
+" if this not work, make sure .viminfo is writable for you
 if has('autocmd')
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g'\"" | endif
 endif
@@ -131,7 +131,7 @@ endif
 " Enable basic mouse behavior such as resizing buffers.
 set mouse+=a
 
-" ================ Turn Off Swap Files ==============
+" =============== Turn Off Swap Files ===============
 
 set noswapfile
 set nobackup
@@ -150,7 +150,7 @@ if has('persistent_undo')
 endif
 
 
-" ============================ theme and status line ============================
+" ============== theme and status line ==============
 
 " theme
 set background=dark
@@ -170,7 +170,7 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 set laststatus=2                " Always show the status line - use 2 lines for the status bar
 
 
-" ============================ specific file type ===========================
+" =============== specific file type ================
 
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab autoindent
 autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab autoindent
@@ -202,7 +202,7 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-" ============================ key map ============================
+" ===================== key map =====================
 
 nnoremap k gk
 nnoremap gk k
