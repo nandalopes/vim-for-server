@@ -39,13 +39,13 @@ set nobackup                    " do not keep a backup file
 
 set novisualbell                " turn off visual bell
 set noerrorbells                " don't beep
-set visualbell t_vb=            " turn off error beep/flash
+set visualbell                  " turn off error beep/flash
 set t_vb=
 set timeoutlen=500
 
 
 " show location
-" set cursorcolumn                " highlight cursor column
+" set cursorcolumn              " highlight cursor column
 set cursorline                  " highlight cursor line
 
 
@@ -62,7 +62,7 @@ set nowrap
 set showcmd                     " display incomplete commands
 set showmode                    " display current modes
 set showmatch                   " jump to matches when entering parentheses
-" set matchtime=2                 " tenths of a second to show the matching parenthesis
+" set matchtime=2               " tenths of a second to show the matching parenthesis
 
 
 " search
