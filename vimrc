@@ -90,7 +90,7 @@ set foldmethod=indent
 set foldlevel=99
 let g:FoldMethod = 0
 map <Leader>zz :call ToggleFold()<cr>
-fun! ToggleFold()
+function! ToggleFold()
     if g:FoldMethod == 0
         exe 'normal! zM'
         let g:FoldMethod = 1
@@ -98,7 +98,7 @@ fun! ToggleFold()
         exe 'normal! zR'
         let g:FoldMethod = 0
     endif
-endfun
+endfunction
 
 " encoding
 set encoding=utf-8
@@ -142,11 +142,11 @@ set nowritebackup
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 if has('persistent_undo')
-  if !isdirectory(expand('~').'/.cache/vim/backups')
-    silent !mkdir --parents ~/.cache/vim/backups > /dev/null 2>&1
-  endif
-  set undodir=~/.cache/vim/backups
-  set undofile
+    if !isdirectory(expand('~').'/.cache/vim/backups')
+        silent !mkdir --parents ~/.cache/vim/backups > /dev/null 2>&1
+    endif
+    set undodir=~/.cache/vim/backups
+    set undofile
 endif
 
 
@@ -157,7 +157,7 @@ set background=dark
 colorscheme evening
 
 if has('termguicolors')
-  set termguicolors
+    set termguicolors
 endif
 
 " set mark column color
@@ -192,15 +192,15 @@ function! AutoSetFileHead()
     normal! G
     normal! o
     normal! o
-endfunc
+endfunction
 
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-fun! <SID>StripTrailingWhitespaces()
+function! <SID>StripTrailingWhitespaces()
     let l = line('.')
     let c = col('.')
     %s/\s\+$//e
     call cursor(l, c)
-endfun
+endfunction
 
 " ===================== key map =====================
 
