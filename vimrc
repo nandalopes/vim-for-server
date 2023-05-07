@@ -223,7 +223,7 @@ set pastetoggle=<F5>            " when in insert mode, press <F5> to go to
 autocmd InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
-" kj 替换 Esc
+" kj replace Esc
 inoremap kj <Esc>
 
 " Quickly close the current window
@@ -247,7 +247,7 @@ nnoremap ` '
 " nnoremap # *
 " nnoremap * #
 
-"Keep search pattern at the center of the screen."
+" Keep search pattern at the center of the screen.
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
@@ -257,15 +257,17 @@ nnoremap <silent> g* g*zz
 " remove highlight
 noremap <silent><Leader>/ :nohls<CR>
 
-"Reselect visual block after indent/outdent.调整缩进后自动选中，方便再次操作
+" Reselect visual block after indent/outdent.
+" After adjusting the indentation, it will be automatically selected,
+" which is convenient for re-operation
 vnoremap < <gv
 vnoremap > >gv
 
 " y$ -> Y Make Y behave like other capitals
 map Y y$
 
-"Map ; to : and save a million keystrokes
-" ex mode commands made easy 用于快速进入命令行
+" Map ; to : and save a million keystrokes
+" ex mode commands made easy, quick access to command line
 nnoremap ; :
 
 " Shift+H goto head of the line, Shift+L goto end of the line
