@@ -187,13 +187,13 @@ augroup end
 function! AutoSetFileHead()
     " .sh
     if &filetype ==? 'sh'
-        call setline(1, '\#!/bin/bash')
+        call setline(1, '#!/bin/bash')
     endif
 
     " python
     if &filetype ==? 'python'
-        call setline(1, '\#!/usr/bin/env python')
-        call append(1, '\# encoding: utf-8')
+        call setline(1, '#!/usr/bin/env python')
+        call append(1, '# encoding: utf-8')
     endif
 
     normal! G
