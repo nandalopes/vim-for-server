@@ -123,9 +123,10 @@ set backspace=indent,eol,start  " make that backspace key work the way it should
 set whichwrap+=<,>,h,l          " allow <Left>, <Right>, h and l move to the next line
 
 " if this not work, make sure .viminfo is writable for you
-if has('autocmd')
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g'\"" | endif
-endif
+augroup vimrc-LastPos
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g'\"" | endif
+augroup end
 
 " NOT SUPPORT
 " Enable basic mouse behavior such as resizing buffers.
@@ -172,11 +173,17 @@ set laststatus=2                " Always show the status line - use 2 lines for 
 
 " =============== specific file type ================
 
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab autoindent
-autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab autoindent
-autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
+augroup filetypeplugin
+    autocmd FileType python set tabstop=4 shiftwidth=4 expandtab autoindent
+    autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab autoindent
+augroup end
+augroup filetypedetect
+    autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
+augroup end
 
-autocmd BufNewFile *.sh,*.py exec ':call AutoSetFileHead()'
+augroup filetypeplugin
+    autocmd BufNewFile *.sh,*.py exec ':call AutoSetFileHead()'
+augroup end
 function! AutoSetFileHead()
     " .sh
     if &filetype ==? 'sh'
@@ -194,7 +201,10 @@ function! AutoSetFileHead()
     normal! o
 endfunction
 
-autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+augroup filetypeplugin
+    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl \
+    autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+augroup end
 function! <SID>StripTrailingWhitespaces()
     let l = line('.')
     let c = col('.')
@@ -220,7 +230,10 @@ nnoremap <F4> :set wrap! wrap?<CR>
 set pastetoggle=<F5>            " when in insert mode, press <F5> to go to
                                 " paste mode, where you can paste mass data
                                 " that won't be autoindented
-autocmd InsertLeave * set nopaste
+augroup vimrc-InsertLeave
+    autocmd!
+    autocmd InsertLeave * set nopaste
+augroup end
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 " kj replace Esc
