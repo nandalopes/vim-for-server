@@ -206,9 +206,14 @@ augroup filetypeplugin
     autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 augroup end
 function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
     let l = line('.')
     let c = col('.')
-    %s/\s\+$//e
+    " Do the business:
+    %snomagic/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
     call cursor(l, c)
 endfunction
 
